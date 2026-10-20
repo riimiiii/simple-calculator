@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Простой калькулятор</title>
+</head>
+<body>
+  <h1>Простой калькулятор</h1>
+
+  <input id="a" type="number" placeholder="Первое число">
+  <select id="op">
+    <option value="+">+</option>
+    <option value="-">−</option>
+    <option value="*">×</option>
+    <option value="/">÷</option>
+  </select>
+  <input id="b" type="number" placeholder="Второе число">
+
+  <button onclick="calculate()">Рассчитать</button>
+  <p id="result">Результат появится здесь</p>
+
+  <script>
+    function calculate() {
+      const a = Number(document.getElementById('a').value);
+      const b = Number(document.getElementById('b').value);
+      const op = document.getElementById('op').value;
+      let result;
+
+      if (document.getElementById('a').value === '' ||
+          document.getElementById('b').value === '') {
+        document.getElementById('result').textContent = 'Введите оба числа';
+        return;
+      }
+
+      if (op === '/' && b === 0) {
+        document.getElementById('result').textContent = 'На ноль делить нельзя';
+        return;
+      }
+
+      if (op === '+') result = a + b;
+      if (op === '-') result = a - b;
+      if (op === '*') result = a * b;
+      if (op === '/') result = a / b;
+
+      document.getElementById('result').textContent = 'Результат: ' + result;
+    }
+  </script>
+</body>
+</html>
